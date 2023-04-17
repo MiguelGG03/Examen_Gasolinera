@@ -34,6 +34,7 @@ class Coche():
             print("Repostando...")
             while time.time()-inicio < tiempo_a_esperar:
                 time.sleep(0.5)
+            surtidor.setEnUso(False)
 
     
 
@@ -44,4 +45,8 @@ if __name__=='__main__':
     gas = Gasolinera()
     print(gas.str())
     p = Pool(5)
-    p.map(Coche.repostar, coches)
+    if gas.check_surtidores():
+        for coche in coches:
+            surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
+            if surtidor != None:
+                p.apply_async(coche.repostar, args=(surtidor,))
