@@ -50,4 +50,4 @@ if __name__=='__main__':
                 surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
                 if surtidor != None:
                     p.apply_async(coche.repostar, args=(surtidor,))
-                    coches.pop(coche)
+                    coches.remove(coche)
