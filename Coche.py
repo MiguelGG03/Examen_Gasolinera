@@ -45,13 +45,11 @@ if __name__=='__main__':
         coches.append(Coche())
     gas = Gasolinera()
     while len(coches)!=0:
-        p = Pool(4)
-        if gas.check_surtidores():
-            for coche in coches:
-                surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
-                #print(gas.str())
-                if surtidor != None:
-                    p.apply_async(coche.repostar, args=(surtidor,))
-                    coches.remove(coche)
-                    p.close()
-                    
+        with Pool(4) as p:
+            if gas.check_surtidores():
+                for coche in coches:
+                    surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
+                    print(gas.str())
+                    if surtidor != None:
+                        p.apply_async(coche.repostar, args=(surtidor,))
+                        coches.remove(coche)
