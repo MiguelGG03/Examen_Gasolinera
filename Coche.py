@@ -1,7 +1,7 @@
 import time
 from Gasolinera import Surtidor,Gasolinera
 import random
-from multiprocessing import Pool
+from multiprocessing import Pool,Queue,Process
 
 class Coche():
 
@@ -27,7 +27,7 @@ class Coche():
                 surtidor.setEnUso(True)
                 self.puede_repostar = True
                 self.surtidor = surtidor
-                print(f"Surtidor {str(surtidor.getId())} asignado al coche {str(self)}")
+                print(f"Surtidor {str(surtidor.getId())} asignado al coche {str(self.getId())}")
                 return surtidor
         return None
     
@@ -46,17 +46,18 @@ def crear_coches(queue):
         queue.put(Coche())    
 
 if __name__=='__main__':
-    coches = []
-    for i in range(100):
-        coches.append(Coche())
+    q = Queue()
     gas = Gasolinera()
-    while len(coches)!=0:
+    p = Process(target=crear_coches, args=(q,))
+    p.start()
+
+    while len(q)!=0:
         with Pool(4) as p:
             if gas.check_surtidores():
-                for coche in coches:
+                for coche in q:
                     surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
                     print(gas.str())
                     print()
                     if surtidor != None:
                         p.apply_async(coche.repostar, args=(surtidor,))
-                        coches.remove(coche)
+                        q.remove(coche)
