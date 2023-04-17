@@ -1,20 +1,21 @@
-class Cola():
+from multiprocessing import Process, Queue, Pool
 
-    def __init__(self):
-        self.items = []
 
-    def estaVacia(self):
-        return self.items == []
 
-    def agregar(self, item):
-        self.items.insert(0,item)
+def f(name):
+    print('hello', name)
 
-    def avanzar(self):
-        return self.items.pop(0)
 
-    def tamano(self):
-        return len(self.items)
+def g(x):
+    return x*x
 
-class ColaSurtidor(Cola):
 
-    
+if __name__ == '__main__':
+    names=['bob','joe','jane']
+    for name in names:
+        p = Process(target=f, args=(name,))
+        p.start()
+        p.join()
+
+    with Pool(5) as p:
+        print(p.map(g, [i for i in range(100)]))
