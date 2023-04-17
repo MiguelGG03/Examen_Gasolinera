@@ -51,3 +51,4 @@ if __name__=='__main__':
                 if surtidor != None:
                     p.apply_async(coche.repostar, args=(surtidor,))
                     coches.remove(coche)
+                    print(gas.str())
