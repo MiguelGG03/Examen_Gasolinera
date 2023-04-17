@@ -7,11 +7,13 @@ class Coche():
         self.repostado = False
 
     def repostar(self, surtidor:Surtidor):
-        tiempo_a_esperar = surtidor.getTiempo()
-        while time.time() < tiempo_a_esperar:
-            print("Repostando...")
-            time.sleep(1)
-        self.repostado = True
+        if surtidor.getEnUso() == False:
+            tiempo_a_esperar = surtidor.getTiempo()
+            surtidor.setEnUso(True)
+            while time.time() < tiempo_a_esperar:
+                print("Repostando...")
+                time.sleep(1)
+            self.repostado = True
 
     def getRepostado(self):
         return self.repostado

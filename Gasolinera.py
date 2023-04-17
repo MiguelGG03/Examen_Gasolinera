@@ -36,4 +36,3 @@ class Surtidor():
 
     def setEnUso(self, en_uso:bool):
         self.en_uso=en_uso
-
