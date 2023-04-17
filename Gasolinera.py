@@ -8,13 +8,21 @@ class Gasolinera():
     # Constructor
     def __init__(self):
         self.surtidores=[]
+        self.surtidor1,self.surtidor2,self.surtidor3,self.surtidor4=Surtidor(),Surtidor(),Surtidor(),Surtidor()
+        self.surtidores.append(self.surtidor1)
+        self.surtidores.append(self.surtidor2)
+        self.surtidores.append(self.surtidor3)
+        self.surtidores.append(self.surtidor4)
     
     # Getters
     def getSurtidores(self):
         return self.surtidores
     
-    def __str__(self):
+    def cuantos_surtidores_str(self):
         return "Gasolinera con " + str(len(self.surtidores)) + " surtidores"
+    
+    def __str__(self):
+        return f""
     
     
 
