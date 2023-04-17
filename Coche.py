@@ -6,6 +6,16 @@ class Coche():
     def __init__(self):
         self.repostado = False
 
+    def getRepostado(self):
+        return self.repostado
+    
+    def ConsigueSurtidor(self,surtidores):
+        for surtidor in surtidores:
+            if surtidor.getEnUso() == False:
+                surtidor.setEnUso(True)
+                return surtidor
+        return None
+    
     def repostar(self, surtidor:Surtidor):
         if surtidor.getEnUso() == False:
             self.repostado = True
@@ -15,10 +25,7 @@ class Coche():
             print("Repostando...")
             while time.time()-inicio < tiempo_a_esperar:
                 time.sleep(0.5)
-            
 
-    def getRepostado(self):
-        return self.repostado
     
 
 if __name__=='__main__':
