@@ -22,7 +22,7 @@ class Gasolinera():
         return "Gasolinera con " + str(len(self.surtidores)) + " surtidores"
     
     def __str__(self):
-        return f""
+        return f"Surtidor {self.surtidor1.getId()} - "
     
     
 
@@ -49,3 +49,9 @@ class Surtidor():
 
     def setEnUso(self, en_uso:bool):
         self.en_uso=en_uso
+
+    def print_uso(self):
+        if self.en_uso:
+            print("Surtidor en uso")
+        else:
+            print("Surtidor libre")
