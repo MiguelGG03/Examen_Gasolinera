@@ -21,7 +21,7 @@ class Surtidor():
     # Constructor
     def __init__(self):
         self.en_uso=False
-        self.tiempo=random.randrange(5,10)
+        self.tiempo=random.randrange(5,10) # En vez de ser de 5 a 10 minutos es de 5 a 10 segundos
 
     # Getters
     def getTiempo(self)-> int:
