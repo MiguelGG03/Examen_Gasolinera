@@ -24,14 +24,14 @@ class Surtidor():
         self.tiempo=random.randrange(5,10)
 
     # Getters
-    def getTiempo(self):
+    def getTiempo(self)-> int:
         return self.tiempo
     
     def getEnUso(self)-> bool:
         return self.en_uso
     
     # Setters
-    def setTiempo(self, tiempo):
+    def setTiempo(self, tiempo:int):
         self.tiempo=tiempo
 
     def setEnUso(self, en_uso:bool):
