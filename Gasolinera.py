@@ -33,14 +33,10 @@ class Surtidor():
     def __init__(self):
         self.id=random.randrange(300)
         self.en_uso=False
-        self.tiempo=random.randrange(5,10) # En vez de ser de 5 a 10 minutos es de 5 a 10 segundos
 
     # Getters
     def getId(self)-> int:
         return self.id
-
-    def getTiempo(self)-> int:
-        return self.tiempo
     
     def getEnUso(self)-> bool:
         return self.en_uso
