@@ -27,13 +27,13 @@ class Surtidor():
     def getTiempo(self):
         return self.tiempo
     
-    def getEnUso(self):
+    def getEnUso(self)-> bool:
         return self.en_uso
     
     # Setters
     def setTiempo(self, tiempo):
         self.tiempo=tiempo
 
-    def setEnUso(self, en_uso):
+    def setEnUso(self, en_uso:bool):
         self.en_uso=en_uso
 
