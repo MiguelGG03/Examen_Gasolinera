@@ -8,9 +8,10 @@ class Coche():
 
     def repostar(self, surtidor:Surtidor):
         if surtidor.getEnUso() == False:
+            inicio=time.time()
             tiempo_a_esperar = surtidor.getTiempo()
             surtidor.setEnUso(True)
-            while time.time() < tiempo_a_esperar:
+            while time.time()-inicio < tiempo_a_esperar:
                 print("Repostando...")
                 time.sleep(1)
             self.repostado = True
@@ -22,4 +23,5 @@ if __name__=="__main__":
     coche = Coche()
     surtidor = Surtidor()
     coche.repostar(surtidor)
+    print(surtidor.getTiempo())
     print(coche.getRepostado())
