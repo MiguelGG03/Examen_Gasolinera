@@ -11,9 +11,9 @@ class Coche():
             inicio=time.time()
             tiempo_a_esperar = surtidor.getTiempo()
             surtidor.setEnUso(True)
+            print("Repostando...")
             while time.time()-inicio < tiempo_a_esperar:
-                print("Repostando...")
-                time.sleep(1)
+                time.sleep(0.5)
             self.repostado = True
 
     def getRepostado(self):
