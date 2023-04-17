@@ -14,3 +14,7 @@ class Cola():
 
     def tamano(self):
         return len(self.items)
+
+class ColaSurtidor(Cola):
+
+    
