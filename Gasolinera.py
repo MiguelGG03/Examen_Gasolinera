@@ -21,11 +21,14 @@ class Gasolinera():
 class Surtidor():
     # Constructor
     def __init__(self):
-        self.id=round(random.random(300),0)
+        self.id=random.randrange(300)
         self.en_uso=False
         self.tiempo=random.randrange(5,10) # En vez de ser de 5 a 10 minutos es de 5 a 10 segundos
 
     # Getters
+    def getId(self)-> int:
+        return self.id
+
     def getTiempo(self)-> int:
         return self.tiempo
     
