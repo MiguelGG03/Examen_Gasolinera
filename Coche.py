@@ -1,5 +1,6 @@
 import time
 from Gasolinera import Surtidor,Gasolinera
+import random
 from multiprocessing import Pool
 
 class Coche():
@@ -8,9 +9,13 @@ class Coche():
         self.repostado = False
         self.puede_repostar = False
         self.surtidor = None
+        self.tiempo=random.randrange(5,10) # En vez de ser de 5 a 10 minutos es de 5 a 10 segundos
 
     def getRepostado(self):
         return self.repostado
+    
+    def getTiempo(self):
+        return self.tiempo
     
     def ConsigueSurtidor(self,surtidores):
         for surtidor in surtidores:
@@ -24,7 +29,7 @@ class Coche():
     def repostar(self, surtidor:Surtidor):
             self.repostado = True
             inicio=time.time()
-            tiempo_a_esperar = surtidor.getTiempo()
+            tiempo_a_esperar = self.getTiempo()
             surtidor.setEnUso(True)
             print("Repostando...")
             while time.time()-inicio < tiempo_a_esperar:
