@@ -1,5 +1,5 @@
 import time
-from Gasolinera import Surtidor
+from Gasolinera import Surtidor,Gasolinera
 
 class Coche():
 
@@ -22,6 +22,7 @@ class Coche():
 if __name__=="__main__":
     coche = Coche()
     surtidor = Surtidor()
+    gasolinera = Gasolinera()
     coche.repostar(surtidor)
     print(surtidor.getTiempo())
     print(coche.getRepostado())
