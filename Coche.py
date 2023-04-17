@@ -1,10 +1,13 @@
 import time
 from Gasolinera import Surtidor,Gasolinera
+from multiprocessing import Pool
 
 class Coche():
 
     def __init__(self):
         self.repostado = False
+        self.puede_repostar = False
+        self.surtidor = None
 
     def getRepostado(self):
         return self.repostado
@@ -13,11 +16,12 @@ class Coche():
         for surtidor in surtidores:
             if surtidor.getEnUso() == False:
                 surtidor.setEnUso(True)
+                self.puede_repostar = True
+                self.surtidor = surtidor
                 return surtidor
         return None
     
     def repostar(self, surtidor:Surtidor):
-        if surtidor.getEnUso() == False:
             self.repostado = True
             inicio=time.time()
             tiempo_a_esperar = surtidor.getTiempo()
@@ -33,5 +37,6 @@ if __name__=='__main__':
     for i in range(10):
         coches.append(Coche())
     gas = Gasolinera()
-    print(gas.cuantos_surtidores_str())
     print(gas.str())
+    p = Pool(5)
+    p.map(Coche.repostar, coches)
