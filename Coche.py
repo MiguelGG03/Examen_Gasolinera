@@ -17,3 +17,9 @@ class Coche():
 
     def getRepostado(self):
         return self.repostado
+    
+if __name__=="__main__":
+    coche = Coche()
+    surtidor = Surtidor()
+    coche.repostar(surtidor)
+    print(coche.getRepostado())
