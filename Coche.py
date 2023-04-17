@@ -23,6 +23,7 @@ class Coche():
                 surtidor.setEnUso(True)
                 self.puede_repostar = True
                 self.surtidor = surtidor
+                print(f"Surtidor {str(surtidor.getId())} asignado al coche {str(self)}")
                 return surtidor
         return None
     
