@@ -40,13 +40,14 @@ class Coche():
 
 if __name__=='__main__':
     coches = []
-    for i in range(10):
+    for i in range(100):
         coches.append(Coche())
     gas = Gasolinera()
-    print(gas.str())
     p = Pool(5)
-    if gas.check_surtidores():
-        for coche in coches:
-            surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
-            if surtidor != None:
-                p.apply_async(coche.repostar, args=(surtidor,))
+    while len(coches)!=0:
+        if gas.check_surtidores():
+            for coche in coches:
+                surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
+                if surtidor != None:
+                    p.apply_async(coche.repostar, args=(surtidor,))
+                    coches.pop(coche)
