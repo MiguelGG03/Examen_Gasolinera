@@ -27,3 +27,4 @@ if __name__=='__main__':
         coches.append(Coche())
     gas = Gasolinera()
     print(gas.cuantos_surtidores_str())
+    print(gas.str())

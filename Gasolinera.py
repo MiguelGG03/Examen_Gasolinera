@@ -52,6 +52,6 @@ class Surtidor():
 
     def print_uso(self):
         if self.en_uso:
-            print("Surtidor en uso")
+            return "Surtidor en uso"
         else:
-            print("Surtidor libre")
+            return "Surtidor libre"
