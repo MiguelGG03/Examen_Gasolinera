@@ -48,7 +48,7 @@ def crear_coches(queue):
 if __name__=='__main__':
     q = Queue()
     gas = Gasolinera()
-    p = Process(target=crear_coches, args=(q,))
+    p = Process(target=crear_coches, args=(q))
     p.start()
 
     while len(q)!=0:
