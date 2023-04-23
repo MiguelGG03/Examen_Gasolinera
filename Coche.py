@@ -50,14 +50,16 @@ if __name__=='__main__':
     q = Queue()
     gas = Gasolinera()
     crear_coches(q)
-    
+
     while q.qsize()!=0:
+
+        print(q.get())
         with Pool(4) as p:
             if gas.check_surtidores():
-                for coche in q:
-                    surtidor = coche.ConsigueSurtidor(gas.getSurtidores())
+                for i in range(q.qsize()):
+                    surtidor = q.get(i).ConsigueSurtidor(gas.getSurtidores())
                     print(gas.str())
                     print()
                     if surtidor != None:
-                        p.apply_async(coche.repostar, args=(surtidor,))
-                        q.remove(coche)
+                        p.apply_async(q.get(i).repostar, args=(surtidor,))
+                        q.task_done(q.get(i))
