@@ -42,16 +42,16 @@ class Coche():
             surtidor.setEnUso(False)
 
 def crear_coches(queue):
-    for i in range(100):
-        queue.put(Coche())    
+    for _ in range(100):
+        queue.put(Coche())
+    return queue   
 
 if __name__=='__main__':
     q = Queue()
     gas = Gasolinera()
-    p = Process(target=crear_coches, args=(q))
-    p.start()
-
-    while len(q)!=0:
+    crear_coches(q)
+    
+    while q.qsize()!=0:
         with Pool(4) as p:
             if gas.check_surtidores():
                 for coche in q:
