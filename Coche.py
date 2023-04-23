@@ -62,4 +62,4 @@ if __name__=='__main__':
                     print()
                     if surtidor != None:
                         p.apply_async(q.get(i).repostar, args=(surtidor,))
-                        q.task_done(q.get(i))
+                        #q.task_done(q.get(i))
