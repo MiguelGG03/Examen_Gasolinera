@@ -19,7 +19,7 @@ class Gasolinera():
         return self.surtidores
     
     def str(self):
-        return f"Surtidor {self.surtidor1.getId()} - {self.surtidor1.print_uso()}\nSurtidor {self.surtidor2.getId()} - {self.surtidor2.print_uso()}\nSurtidor {self.surtidor3.getId()} - {self.surtidor3.print_uso()}\nSurtidor {self.surtidor4.getId()} - {self.surtidor4.print_uso()}"
+        return f"Surtidor {self.surtidor1.getId()} - {self.surtidor1.print_uso()}\nSurtidor {self.surtidor2.getId()} - {self.surtidor2.print_uso()}\nSurtidor {self.surtidor3.getId()} - {self.surtidor3.print_uso()}\nSurtidor {self.surtidor4.getId()} - {self.surtidor4.print_uso()}\n"
     
     def check_surtidores(self):
         for surtidor in self.surtidores:
