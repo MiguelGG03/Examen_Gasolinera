@@ -54,7 +54,7 @@ if __name__=='__main__':
     while q.qsize()!=0:
 
         print(q.get())
-        with Pool(4) as p:
+        with Pool(processes=100) as p:
             if gas.check_surtidores():
                 for i in range(q.qsize()):
                     surtidor = q.get(i).ConsigueSurtidor(gas.getSurtidores())
